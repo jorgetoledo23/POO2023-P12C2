@@ -2,6 +2,7 @@
 #y algunas caracteristicas (atributos)
 
 import datetime
+import os
 
 class Usuario:
 
@@ -24,7 +25,7 @@ class Usuario:
 
     def Seguir(self, user):
         self.Seguidos.append(user)
-        user.Seguidores(self)
+        user.Seguidores.append(self)
 
     def DejarSeguir(self):
         pass
@@ -32,6 +33,22 @@ class Usuario:
     def DarLike(self, post):
         like = Like(self, post)
         post.Likes.append(like)
+
+    def VerSeguidos(self):
+        os.system("cls")
+        print(f"Tienes {len(self.Seguidos)} Usuarios Seguidos")
+        for u in self.Seguidos:
+            print(u.Username)
+        input()
+
+    def VerSeguidores(self):
+        os.system("cls")
+        print(f"Tienes {len(self.Seguidores)} Usuarios Seguidores")
+        for u in self.Seguidores:
+            print(u.Username)
+        input()
+        
+
 
 class Post:
     def __init__(self, descripcion, img_video, ):
@@ -45,6 +62,7 @@ class Like:
         self.User = user
         self.Post = post
         self.Fecha = datetime.datetime.now()
+
 
 
 
