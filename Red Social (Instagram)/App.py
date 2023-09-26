@@ -4,8 +4,14 @@ listaUsuarios = []
 
 user1 = Usuario("user1", "as", "user1","123")
 user2 = Usuario("user2", "asd", "user2", "123")
+user3 = Usuario("user3", "asd", "user3", "123")
+user4 = Usuario("user4", "asd", "user4", "123")
+user5 = Usuario("user5", "asd", "user5", "123")
 listaUsuarios.append(user1)
 listaUsuarios.append(user2)
+listaUsuarios.append(user3)
+listaUsuarios.append(user4)
+listaUsuarios.append(user5)
 
 while True:
     os.system("cls")
@@ -29,13 +35,13 @@ while True:
 
     if(opcion == "2"):
         os.system("cls")
-        user = None
+        userLogueado = None
         correo = input("Ingresa tu Correo: ")
         for x in listaUsuarios:
             if(x.Email == correo):
                 #Correo Correcto
-                user = x
-        if(user == None):
+                userLogueado = x
+        if(userLogueado == None):
             os.system("cls")
             input("Usuario NO Encontrado!!!")
         else:
@@ -44,7 +50,7 @@ while True:
             while True:
                 if(contador < 3):
                     password = input("Ingresa Password: ")
-                    if(user.Password == password):
+                    if(userLogueado.Password == password):
                         os.system("cls")
                         input("Inicio de Sesion Correcto")
                         while True:
@@ -57,7 +63,7 @@ while True:
                             print("[0] - Cerrar Sesion ")
                             opcion2 = input("Ingresa tu Opcion: ")
                             if(opcion2 == "1"):
-                                x.Postear("Vacaciones", "img")
+                                userLogueado.Postear("Vacaciones", "img")
 
                             if(opcion2 == "2"):
                                 num = 1
@@ -66,17 +72,17 @@ while True:
                                     num+= 1
                                 seguir = int(input("Ingresa numero del usuario a seguir: "))
                                 calculo = seguir - 1
-                                x.Seguir(listaUsuarios[calculo])
+                                userLogueado.Seguir(listaUsuarios[calculo])
 
 
                             if(opcion2 == "5"): #Ver Seguidos
-                                x.VerSeguidos()
+                                userLogueado.VerSeguidos()
 
                             if(opcion2 == "4"): #Ver Seguidores
-                                x.VerSeguidores()
+                                userLogueado.VerSeguidores()
                                 
                             if(opcion2 == "0"):
-                                x = None
+                                userLogueado = None
                                 break        
                     else:
                         os.system("cls")
