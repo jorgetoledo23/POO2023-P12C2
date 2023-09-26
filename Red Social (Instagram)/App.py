@@ -56,10 +56,11 @@ while True:
                         while True:
                             print("[1] - Postear") #Task 1
                             print("[2] - Seguir")
-                            print("[3] - Dar Like ")
+                            print("[3] - Dar Like ") #Task 3
                             print("[4] - Ver mis Seguidores")
                             print("[5] - Ver Seguidos")
                             print("[6] - Ver mis Posts") #Task 2
+                            print("[7] - Dejar de Seguir") #Task 4
                             print("[0] - Cerrar Sesion ")
                             opcion2 = input("Ingresa tu Opcion: ")
                             if(opcion2 == "1"):
