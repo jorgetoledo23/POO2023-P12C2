@@ -47,7 +47,37 @@ while True:
                     if(user.Password == password):
                         os.system("cls")
                         input("Inicio de Sesion Correcto")
-                        break
+                        while True:
+                            print("[1] - Postear") #Task 1
+                            print("[2] - Seguir")
+                            print("[3] - Dar Like ")
+                            print("[4] - Ver mis Seguidores")
+                            print("[5] - Ver Seguidos")
+                            print("[6] - Ver mis Posts") #Task 2
+                            print("[0] - Cerrar Sesion ")
+                            opcion2 = input("Ingresa tu Opcion: ")
+                            if(opcion2 == "1"):
+                                x.Postear("Vacaciones", "img")
+
+                            if(opcion2 == "2"):
+                                num = 1
+                                for u in listaUsuarios:
+                                    print(f"[{num}] - {u.Username}")
+                                    num+= 1
+                                seguir = int(input("Ingresa numero del usuario a seguir: "))
+                                calculo = seguir - 1
+                                x.Seguir(listaUsuarios[calculo])
+
+
+                            if(opcion2 == "5"): #Ver Seguidos
+                                x.VerSeguidos()
+
+                            if(opcion2 == "4"): #Ver Seguidores
+                                x.VerSeguidores()
+                                
+                            if(opcion2 == "0"):
+                                x = None
+                                break        
                     else:
                         os.system("cls")
                         contador += 1
@@ -56,34 +86,4 @@ while True:
                     input("Usuario Bloqueado!")
                     break
         
-        while True:
-            print("[1] - Postear") #Task 1
-            print("[2] - Seguir")
-            print("[3] - Dar Like ")
-            print("[4] - Ver mis Seguidores")
-            print("[5] - Ver Seguidos")
-            print("[6] - Ver mis Posts") #Task 2
-            print("[0] - Cerrar Sesion ")
-            opcion2 = input("Ingresa tu Opcion: ")
-            if(opcion2 == "1"):
-                x.Postear("Vacaciones", "img")
-
-            if(opcion2 == "2"):
-                num = 1
-                for u in listaUsuarios:
-                    print(f"[{num}] - {u.Username}")
-                    num+= 1
-                seguir = int(input("Ingresa numero del usuario a seguir: "))
-                calculo = seguir - 1
-                x.Seguir(listaUsuarios[calculo])
-
-
-            if(opcion2 == "5"): #Ver Seguidos
-                x.VerSeguidos()
-
-            if(opcion2 == "4"): #Ver Seguidores
-                x.VerSeguidores()
-                
-            if(opcion2 == "0"):
-                x = None
-                break        
+       
