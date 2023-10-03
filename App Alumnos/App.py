@@ -2,7 +2,10 @@ import os
 from typing import List
 from Model import Alumno
 
-listadoAlumnos:List[Alumno] = []
+a=Alumno("1-1", "Jhon", "Snow")
+b=Alumno("2-2", "Jack", "Sparrow")
+
+listadoAlumnos:List[Alumno] = [a,b]
 
 while 10>5:
     os.system("cls")
@@ -27,11 +30,31 @@ while 10>5:
         for alumno in listadoAlumnos:
             print(alumno.getInfo())
         input()
-        
+
     if(opcion == "3"):
-        pass #Ingreso de Nota
+        #Ingreso de Nota
+        alumno = None
+        rut = input("Ingresa el Rut del Alumno: ")
+        for a in listadoAlumnos:
+            if(a.getRut() == rut):
+                alumno = a
+        if(alumno != None):
+            nota = float(input("Ingresa la Nota: "))
+            alumno.AgregarNota(nota)
+        else:
+            input("Alumno con ese Rut no se encuentra!")
+        
     if(opcion == "4"):
-        pass #Ver Notas y Promedio
+        #Ver Notas y Promedio
+        alumno = None
+        rut = input("Ingresa el Rut del Alumno: ")
+        for a in listadoAlumnos:
+            if(a.getRut() == rut):
+                alumno = a
+        if(alumno != None):
+            alumno.VerNotas()
+        else:
+            input("Alumno con ese Rut no se encuentra!")
     if(opcion == "5"):
         break #Salir del Sistema
     
