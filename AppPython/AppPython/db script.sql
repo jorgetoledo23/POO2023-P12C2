@@ -1,4 +1,8 @@
 -- Active: 1698756320233@@127.0.0.1@3306@test
+create database test;
+
+use test;
+
 create table tbl_categorias(
     cod_categoria int AUTO_INCREMENT PRIMARY KEY,
     nombre varchar(50) not null
