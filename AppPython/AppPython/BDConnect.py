@@ -1,7 +1,7 @@
 #pip install mysql-connector-python
 import mysql.connector
 from mysql.connector import errorcode
-from Model.Categoria import Categoria
+from Model.Clases import Categoria, Producto
 from typing import List
 
 class DAO:
@@ -29,6 +29,13 @@ class DAO:
         cursor.execute(query, data)
         self.cnx.commit()
 
+    def InsertarProducto(self, prod:Producto):
+        cursor = self.cnx.cursor()
+        query = ("INSERT INTO tbl_productos (nombre, descripcion, valor_unitario, stock, cod_categoria) VALUES (%s, %s, %s, %s, %s);")
+        data = (prod.getNombreProducto(), prod.getDescripcion(), prod.getValor(), prod.getStock(), prod.getCodCategoria())
+        cursor.execute(query, data)
+        self.cnx.commit()
+
     def LeerCategorias(self) -> List[Categoria]:
         cursor = self.cnx.cursor()
         query = ("SELECT * FROM tbl_categorias")
@@ -38,5 +45,15 @@ class DAO:
             cat = Categoria(cod_categoria, nombre)
             categorias.append(cat)
         return categorias
+    
+    def LeerProductos(self) -> List[Producto]:
+        cursor = self.cnx.cursor()
+        query = ("SELECT * FROM tbl_productos")
+        cursor.execute(query)
+        productos:List[Producto] = []
+        for (cod_producto, nombre, descripcion, valor_unitario, stock, cod_categoria) in cursor:
+            p = Producto(cod_producto, nombre, descripcion, valor_unitario, stock, cod_categoria)
+            productos.append(p)
+        return productos
 
     

@@ -9,7 +9,6 @@ class Categoria:
     def getNombreCategoria(self) -> str:
         return self.__Nombre
     
-
 class Producto:
     def __init__(self, cod, nombre, descripcion, valor_unitario, stock, cod_categoria) -> None:
         self.__Cod_Producto = cod
