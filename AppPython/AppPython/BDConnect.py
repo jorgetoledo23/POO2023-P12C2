@@ -36,6 +36,20 @@ class DAO:
         cursor.execute(query, data)
         self.cnx.commit()
 
+    def EliminarCategoria(self, cod:int):
+        cursor = self.cnx.cursor()
+        query = ("DELETE FROM tbl_categorias WHERE cod_categoria = %s")
+        data = (cod,)
+        cursor.execute(query, data)
+        self.cnx.commit()
+
+    def ActualizarCategoria(self, cat:Categoria ):
+        cursor = self.cnx.cursor()
+        query = ("UPDATE tbl_categorias SET nombre = %s WHERE cod_categoria = %s")
+        data = (cat.getNombreCategoria(), cat.getCodCategoria())
+        cursor.execute(query, data)
+        self.cnx.commit()
+
     def LeerCategorias(self) -> List[Categoria]:
         cursor = self.cnx.cursor()
         query = ("SELECT * FROM tbl_categorias")

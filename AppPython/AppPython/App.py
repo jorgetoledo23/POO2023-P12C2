@@ -10,6 +10,8 @@ while True:
     print("{3} - Insertar Nuevo Producto")
     print("{4} - Listar Productos")
 
+    print("{5} - Eliminar Categoria")
+    print("{6} - Actualizar Categoria")
 
     print("{0} - Salir")
     op = input("Selecciona una Opcion: ")
@@ -44,3 +46,21 @@ while True:
         for p in dao.LeerProductos():
             print(f"{p.getNombreProducto()} | {p.getDescripcion()} | {p.getValor()} | { p.getStock() } | {p.getCodCategoria()}")
         input("Productos Listados... Presiona ENTER para continar!")
+
+    if(op == "5"):
+        os.system("cls")
+        for cat in dao.LeerCategorias():
+            print(f"{cat.getCodCategoria()} | {cat.getNombreCategoria()}")
+        cat = input("Ingresa el Codigo de la Categoria que desea Eliminar: ")
+        dao.EliminarCategoria(cat)
+        input("Categoria Eliminada! Presione ENTER para Continuar...")
+    
+    if(op=="6"):
+        os.system("cls")
+        for cat in dao.LeerCategorias():
+            print(f"{cat.getCodCategoria()} | {cat.getNombreCategoria()}")
+        cat = input("Ingresa el Codigo de la Categoria que deseas Actualizar: ")
+        newName = input("Ingresa el Nuevo nombre de la Categoria: ")
+        category = Categoria(cat, newName)
+        dao.ActualizarCategoria(category)
+        input("Categoria Actualizada! Presione ENTER para Continuar...")
